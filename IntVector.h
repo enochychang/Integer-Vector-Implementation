@@ -18,22 +18,21 @@ class IntVector {
 		//This function should set both the size and capacity of the IntVector 
 		//to 0 and will not allocate any memory to store integers.
 		//(Make sure you do not have a dangling pointer.)
+			//Member initialization list syntax
+				//When you initialize fields via Member initializer list 
+				//the constructors will be called once and the object will be 
+				//constructed and initialized in one operation.
+				//prevents the default constructor being invoked.
+				//If you use assignment then the fields will be first initialized 
+				//with default constructors and then reassigned 
+				//(via assignment operator) with actual values.
 			IntVector() : sz(0), cap(0), data(nullptr) {}
 
 		//Sets both the size and capacity of the IntVector to the value of the 
 		//parameter passed in and dynamically allocates an array of that size 
 		//as well. This function should initialize all elements of the array 
 		//to the value of the 2nd parameter.
-			IntVector(unsigned size, int value = 0) : 
-				sz(size), 
-				cap(size),
-				//ptr = new int[sz](); special syntax for value-initializing an array
-					//value init->value init->zero init
-					//https://stackoverflow.com/questions/2204176/how-to-initialise-memory-with-new-operator-in-c
-					//https://stackoverflow.com/questions/8860780/what-does-value-initializing-something-mean
-				//member initializer list possible with new
-					//https://stackoverflow.com/questions/14681714/using-new-in-a-member-initializer-list-of-constructor
-				data(new int[sz]()) {}
+			IntVector(unsigned size, int value = 0);
 
 		//The destructor is used to clean up (delete) any remaining 
 		//dynamically-allocated memory. For this class, that will be 
@@ -55,9 +54,13 @@ class IntVector {
 		//in index position. Your function should throw an outofrange exception if 
 		//an invalid index is passed in. An invalid index is an index greater than or 
 		//equal to the size.
-			const int & at(unsigned index) const;
-		const int & front() const;
-		const int & back() const;
+			const int& at(unsigned index) const;
+
+		//This function will return the value stored in the first element.
+			const int& front() const;
+			
+		//This function will return the value stored in the last element.
+			const int& back() const;
 
 };
 
