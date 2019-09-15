@@ -16,6 +16,11 @@ int main() {
 
 	cout << test2->at(2) << endl << test2->front() << endl << test2->back() << endl;
 
+	test2->push_back(3);
+	test2->push_back(4);
+	test2->pop_back();
+	cout << test2->back();
+
 	//test delete
 	delete test2;
 
